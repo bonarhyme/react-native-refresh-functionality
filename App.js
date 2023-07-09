@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import BottomLoader from './screens/BottomLoader';
+import TopLoader from './screens/TopLoader';
+import TopLoaderRefreshControl from './screens/TopLoaderRefreshControl';
+import Combined from './screens/Combined';
 
-export default function App() {
+const App = () => {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <BottomLoader />
+      {/* <TopLoader /> */}
+      {/* <TopLoaderRefreshControl /> */}
+      {/* <Combined /> */}
     </View>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginVertical: 40,
+    marginHorizontal: 20,
   },
 });
