@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native/types';
+import { StyleSheet } from 'react-native';
 
 export const Loader = ({ isLoading = false }) => {
   return isLoading ? (
