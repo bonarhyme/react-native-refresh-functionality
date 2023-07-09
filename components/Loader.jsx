@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
 
 export const Loader = ({ isLoading = false }) => {
   return isLoading ? (

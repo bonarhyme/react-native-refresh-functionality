@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 export const Item = ({ item }) => {
   return (
