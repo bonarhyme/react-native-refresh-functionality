@@ -1,15 +1,16 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import { useFetchUser } from '../hooks/useFetchUser';
+import React, { useEffect, useRef, useState } from 'react';
+import { FETCH_RESULTS, useFetchUser } from '../hooks/useFetchUser';
 import { Item } from '../components/Item';
 import { Loader } from '../components/Loader';
 
 const BottomLoader = () => {
-  const { isLoading, users, errorMessage, getUsers } = useFetchUser();
+  const { isLoading, success, users, errorMessage, getUsers } = useFetchUser();
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const loadMoreItem = () => {
+  const loadMoreItem = (e) => {
+    console.log({ e });
     setCurrentPage((prev) => prev + 1);
   };
 
@@ -35,9 +36,10 @@ const BottomLoader = () => {
           data={users}
           renderItem={Item}
           keyExtractor={(item) => item?.email}
-          ListFooterComponent={Loader}
+          ListFooterComponent={<Loader isLoading={isLoading} />}
           onEndReached={loadMoreItem}
           onEndReachedThreshold={0}
+          maxToRenderPerBatch={FETCH_RESULTS}
           ListEmptyComponent={<Loader isLoading />}
         />
       ) : null}
