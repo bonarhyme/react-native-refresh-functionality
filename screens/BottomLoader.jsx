@@ -10,7 +10,6 @@ const BottomLoader = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const loadMoreItem = (e) => {
-    console.log({ e });
     setCurrentPage((prev) => prev + 1);
   };
 
@@ -31,18 +30,16 @@ const BottomLoader = () => {
         Infinite Bottom Loader
       </Text>
 
-      {users?.length > 0 ? (
-        <FlatList
-          data={users}
-          renderItem={Item}
-          keyExtractor={(item) => item?.email}
-          ListFooterComponent={<Loader isLoading={isLoading} />}
-          onEndReached={loadMoreItem}
-          onEndReachedThreshold={0}
-          maxToRenderPerBatch={FETCH_RESULTS}
-          ListEmptyComponent={<Loader isLoading />}
-        />
-      ) : null}
+      <FlatList
+        data={users}
+        renderItem={Item}
+        keyExtractor={(item) => item?.email}
+        ListFooterComponent={<Loader isLoading={isLoading} />}
+        onEndReached={loadMoreItem}
+        onEndReachedThreshold={0}
+        maxToRenderPerBatch={FETCH_RESULTS}
+        ListEmptyComponent={<Loader isLoading />}
+      />
 
       {errorMessage ? <Text>{errorMessage}</Text> : null}
     </View>

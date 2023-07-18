@@ -7,7 +7,6 @@ export const Item = ({ item, index }) => {
       <View style={styles.itemContentWrapper}>
         <Text
           style={styles.itemName}
-          onPress={() => console.log({ index })}
         >{`${item?.name?.title} ${item?.name?.first} ${item?.name?.last}`}</Text>
         <Text style={styles.itemEmail}>{`${item?.email}`}</Text>
       </View>

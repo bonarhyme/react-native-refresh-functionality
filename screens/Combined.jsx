@@ -43,7 +43,11 @@ const Combined = () => {
   };
 
   useEffect(() => {
-    getUsersTop(currentPage, isTop);
+    if (isTop) {
+      getUsersTop(currentPage, isTop);
+    } else {
+      getUsersBottom(currentPage, isTop);
+    }
   }, [currentPage]);
 
   useEffect(() => {
@@ -62,6 +66,10 @@ const Combined = () => {
       setConfirmedUsers(usersBottom);
     }
   }, [successBottom]);
+
+  useEffect(() => {
+    console.log({ isLoadingBottom });
+  }, [isLoadingBottom]);
 
   return (
     <View>
@@ -107,7 +115,7 @@ const Combined = () => {
         }}
         onEndReachedThreshold={0}
         ListEmptyComponent={<Loader isLoading />}
-        initialScrollIndex={0}
+        // initialScrollIndex={0}
         // Layout doesn't know the exact location of the requested element.
         // Falling back to calculating the destination manually
         onScrollToIndexFailed={({ index, averageItemLength }) => {

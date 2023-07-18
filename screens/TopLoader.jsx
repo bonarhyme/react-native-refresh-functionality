@@ -27,6 +27,7 @@ const TopLoader = () => {
 
   useEffect(() => {
     if (success) {
+      setRefreshing(false);
       scrollToItem(FETCH_RESULTS - 1);
     }
   }, [success]);
@@ -34,12 +35,6 @@ const TopLoader = () => {
   useEffect(() => {
     getUsers(currentPage, true);
   }, [currentPage]);
-
-  useEffect(() => {
-    if (success) {
-      setRefreshing(false);
-    }
-  }, [success]);
 
   return (
     <View>
@@ -67,10 +62,8 @@ const TopLoader = () => {
             colors={['red', 'green', 'blue']}
           />
         }
-        style={{ borderWidth: 5, backgroundColor: 'red' }}
         maxToRenderPerBatch={FETCH_RESULTS}
         ListEmptyComponent={<Loader isLoading />}
-        initialScrollIndex={0}
         // Layout doesn't know the exact location of the requested element.
         // Falling back to calculating the destination manually
         onScrollToIndexFailed={({ index, averageItemLength }) => {
